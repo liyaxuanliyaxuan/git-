@@ -1,0 +1,89 @@
+.shop-car{
+    background-color: #f4f4f4;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    .person-address{
+        width: 680rpx;
+        height: 100rpx;
+        padding: 10rpx 35rpx;
+        display: flex;
+        align-items: center;
+        background-color: #fff;
+        Image{
+            width: 50rpx;
+            height: 50rpx;
+        }
+        .address-all{
+            flex: 1;
+            display: flex;
+            justify-content: space-between;
+            padding: 30rpx;
+            align-items: center;
+            .person-info{
+                display: flex;
+                flex-direction: column;
+                font-size: 26px; 
+            }
+            .address-manage{
+                font-size: 26px;
+                color: #666;
+            }
+        }
+    }
+    .shop-list{
+        margin-bottom: 110rpx;
+    }
+    .buy{
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        height: 90rpx;
+        padding: 0 25rpx;
+        width: 700rpx;
+        position: fixed;
+        bottom: 0;
+        background-color: #fff;
+        border-top: 1px solid siver;
+        font-size: 28px;
+        color: 333;
+        font-family: 'SimHei';
+        .choose-all{
+            display: flex;
+            align-items: center;
+            .circle{
+                width: 25rpx;
+                height: 25rpx;
+                border-radius: 50%;
+                border: 1px solid #333;
+                margin-right: 15rpx;
+            }
+            .choose{
+                height: 25rpx;
+                line-height: 25rpx;
+            }
+        }
+        .pay-all{
+            display: flex;
+            align-items: center;
+            .price-all{
+                display: flex;
+                align-items: center;
+                .price-detail{
+                    color: #71C9CE;
+                    font-weight: bold;
+                }
+            }
+            .pay-btn{
+                margin-left: 15rpx;
+                width: 140rpx;
+                text-align: center;
+                line-height: 70rpx;
+                height: 70rpx;
+                border-radius: 15rpx;
+                color: #fff;
+                background-image: linear-gradient(#cbf1f5,#A6E3E9);
+            }
+        }
+    }
+}
