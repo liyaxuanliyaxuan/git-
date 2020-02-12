@@ -20,9 +20,10 @@ class App extends Component {
   config = {
     
     pages: [
+      'pages/homepage/index',
       'pages/addressDetail/index',
       'pages/addressList/index',
-      'pages/homepage/index',
+      'pages/goodsDetail/index',
       'pages/orderdetail/index',
       'pages/orderlist/index',
       'pages/shopcar/index',
@@ -34,7 +35,7 @@ class App extends Component {
     window: {
       backgroundTextStyle: 'light',
       navigationBarBackgroundColor: '#A6E3E9',
-      navigationBarTitleText: '便利Go',
+      navigationBarTitleText: '便利狗',
       navigationBarTextStyle: 'black'
     },
     tabBar: {

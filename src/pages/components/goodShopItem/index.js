@@ -6,10 +6,29 @@ import { AtIcon } from 'taro-ui'
 import './index.less';
 
 class GoodShopItem extends Component {
+    constructor(props) {
+        super(props);
+        this.state = {
+            goodNum: this.props.goodInfo ? this.props.goodInfo.goodNum : 0
+        }
+    }
+    addGoodNum = () => {
+        console.log('++',this.state.goodNum)
+        this.setState({
+            goodNum: this.state.goodNum + 1
+        })
+    }
+    
+    subtractGoodNum = () => {
+        this.setState({
+            goodNum: this.state.goodNum - 1
+        })
+    }
+
     render() {
         const { goodInfo } = this.props;
         return(
-            goodInfo ?
+            goodInfo && this.state.goodNum ?
             <View className='good-shop-item'>
                 <View className='ifchoose'></View>
                 <Image className='good-img' src={goodInfo.goodImg} />
@@ -18,9 +37,13 @@ class GoodShopItem extends Component {
                     <View className='good-buy'>
                         <View className='good-price'>￥{goodInfo.goodPrice * goodInfo.goodNum}</View>
                         <View className='good-add'>
-                            <AtIcon value='add-circle' size='20' color='rgb(190, 190, 190)'></AtIcon>
-                            <View className='good-num'>{ goodInfo.goodNum }</View>
-                            <AtIcon value='subtract-circle' size='20' color='rgb(190, 190, 190)'></AtIcon>
+                            <AtIcon value='add-circle' size='20' color='rgb(190, 190, 190)'
+                                onClick={this.addGoodNum.bind(this)}
+                                ></AtIcon>
+                            <View className='good-num'>{ this.state.goodNum }</View>
+                            <AtIcon value='subtract-circle' size='20' color='rgb(190, 190, 190)'
+                                onClick={this.subtractGoodNum.bind(this)}
+                                ></AtIcon>
                         </View>
                     </View>
                 </View>

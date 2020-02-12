@@ -10,11 +10,18 @@ import AddressItem from '../components/addressItem/index'
 
 class AddressList extends Component {
 
+    addAddressBtn = () => {
+        Taro.navigateTo({
+            url: '/pages/addressDetail/index'
+        })
+    }
     render() {
         return (
             <View className='address-list'>
             
-                <View class='add-btn'>新增收货地址</View>
+                <View class='add-btn'
+                    onClick={this.addAddressBtn.bind(this)}
+                    >新增收货地址</View>
                 <AddressItem />
                 <AddressItem />
             </View>

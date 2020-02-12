@@ -43,6 +43,11 @@ class ShopCar extends Component {
               }]
         }
     }
+
+    addressManage = () => {
+        Taro.navigateTo({ url: '/pages/addressList/index' })
+    }
+
     render() {
         const { shopCarList } = this.state;
         return (
@@ -55,7 +60,7 @@ class ShopCar extends Component {
                             <View className='tel'>兰铭成 177****0792</View>
                             <View className='address'>四川省 广元市 利州区</View>
                         </View>
-                        <View className='address-manage'>个人地址管理 ></View>
+                        <View className='address-manage' onClick={this.addressManage.bind(this)}>个人地址管理 ></View>
                     </View>
                 </View>
 

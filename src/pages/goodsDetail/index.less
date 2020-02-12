@@ -1,0 +1,71 @@
+.goods-detail{
+    background-color: #f4f4f4;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    .goods-detail-top{
+        width: 100%;
+        background-color: #fff;
+        padding: 0 0 20rpx 0;
+        .goods-pic{
+            width: 100%;
+        }
+        .goods{
+            font-family: 'SimHei';
+            position: relative;
+            .add-btn{
+                position: absolute;
+                right: 40rpx;
+                bottom: 10rpx;
+                width: 240rpx;
+                height: 55rpx;
+                line-height: 55rpx;
+                text-align: center;
+                background-color: #71C9CE;
+                border-radius: 25px;
+                color: #fff;
+            }
+            .title{
+                font-size: 36px;
+                color: #333;
+                padding: 5rpx 20rpx;
+            }
+            .num{
+                font-size: 26px;
+                color: #999;
+                padding: 5rpx 20rpx;
+            }
+            .price{
+                display: flex;
+                align-items: baseline;
+                padding: 10rpx 20rpx;
+                .old{
+                    font-size: 26px;
+                    text-decoration: line-through;
+                    color: #999;
+                }
+                .new{
+                    font-size: 40px;
+                    color: #71C9CE;
+                    font-weight: bold;
+                    margin-left: 10rpx;
+                }
+            }
+        }
+    }
+    .goods-detail-btm{
+        background-color: #fff;
+        margin-top: 40rpx;
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        .title{
+            font-weight: 'SimHei';
+            color: #333;
+            font-weight: bold;
+            font-family: 36px;                          
+        }
+    }
+}
