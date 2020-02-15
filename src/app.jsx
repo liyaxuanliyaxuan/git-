@@ -1,6 +1,7 @@
 import Taro, { Component } from '@tarojs/taro'
 import { Provider } from '@tarojs/redux'
 import Index from './pages/index'
+// eslint-disable-next-line import/first
 import 'taro-ui/dist/style/index.scss'
 
 import configStore from './store'
@@ -16,7 +17,9 @@ import './app.less'
 const store = configStore()
 
 class App extends Component {
-
+  global = {
+    url: 'http://192.168.0.104:7001'
+  }
   config = {
     
     pages: [
@@ -30,6 +33,7 @@ class App extends Component {
       'pages/classification/index',
       'pages/personal/index',
       'pages/index/index',
+      
 
     ],
     window: {

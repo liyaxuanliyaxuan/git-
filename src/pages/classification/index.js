@@ -58,12 +58,12 @@ class Classification extends Component {
         const { tabList, currentIndex, goodsList } = this.state;
         return (
             <AtTabs
-            current={currentIndex}
-            scroll
-            height='100vh'
-            tabDirection='vertical'
-            tabList={tabList}
-            onClick={this.handleClick.bind(this)}>
+              current={currentIndex}
+              scroll
+              height='100vh'
+              tabDirection='vertical'
+              tabList={tabList}
+              onClick={this.handleClick.bind(this)}>
               <AtTabsPane tabDirection='vertical' current={currentIndex} index={0}>
                 {
                   goodsList.map((item, indexGoods) => {

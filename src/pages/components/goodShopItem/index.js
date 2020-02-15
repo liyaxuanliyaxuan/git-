@@ -1,8 +1,7 @@
 import Taro, { Component } from '@tarojs/taro';
 import { View, Image } from '@tarojs/components';
 import { connect } from '@tarojs/redux';
-import { AtIcon } from 'taro-ui'
-
+import { AtIcon, AtCheckbox } from 'taro-ui';
 import './index.less';
 
 class GoodShopItem extends Component {
@@ -25,12 +24,15 @@ class GoodShopItem extends Component {
         })
     }
 
+    
+
     render() {
         const { goodInfo } = this.props;
         return(
             goodInfo && this.state.goodNum ?
             <View className='good-shop-item'>
-                <View className='ifchoose'></View>
+                <View className='ifchoose'>
+                </View>
                 <Image className='good-img' src={goodInfo.goodImg} />
                 <View className='good-info'>
                     <View className='good-title'>{goodInfo.goodTitle}</View>

@@ -1,6 +1,7 @@
 const config = {
   projectName: 'bianligo',
   date: '2020-1-4',
+  
   designWidth: 750,
   deviceRatio: {
     '640': 2.34 / 2,
