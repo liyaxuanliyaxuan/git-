@@ -24,7 +24,6 @@ class HomePage extends Component {
                 'content-type': 'application/json'
             },
             success: (res) => {
-                console.log(res)
                 this.setState({
                     activityList: res.data.data.activityList
                 })
@@ -65,7 +64,12 @@ class HomePage extends Component {
         })
     }
 
-    
+    navGoodsDetail = (index) => {
+        console.log(this.state.hotNewGoodsList[index].goodsId)
+        Taro.navigateTo({
+            url: `/pages/goodsDetail/index?goodsId=${this.state.hotNewGoodsList[index].goodsId}`
+        })
+    }
 
     render() {
         const { activityList, hotNewGoodsList } = this.state;
@@ -129,7 +133,10 @@ class HomePage extends Component {
                         {
                             hotNewGoodsList.map((item, index) => {
                                 return (
-                                    <View key={index} className={index % 2 ? 'item item-right' : 'item item-left'}>
+                                    <View
+                                        onClick={this.navGoodsDetail.bind(this, index)}
+                                        key={index}
+                                        className={index % 2 ? 'item item-right' : 'item item-left'}>
                                         <Image src={item.goodsImg} className='img' />
                                         <View className='goods-name'>
                                             {item.goodsName}
