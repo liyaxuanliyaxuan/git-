@@ -71,6 +71,14 @@ class HomePage extends Component {
         })
     }
 
+    navAcitivityList = (index) => {
+
+        const { activityTitle, activityType } = this.state.activityList[index]
+        Taro.navigateTo({
+            url: `/pages/activityList/index?activityTitle=${activityTitle}&activityType=${activityType}`
+        })
+    }
+
     render() {
         const { activityList, hotNewGoodsList } = this.state;
         return (
@@ -83,8 +91,10 @@ class HomePage extends Component {
                 </View>
                 <View className='top-back'></View>
                 <Banner />
+
+                {/* activityBar */}
                 <View className='discount-zone'>
-                    <View className='discount-zone-box box-main'>
+                    <View className='discount-zone-box box-main' onClick={this.navAcitivityList.bind(this, 0)}>
                         <View className='title'>
                             <View className='main'>
                                 {activityList[0].activityTitle}
@@ -98,7 +108,7 @@ class HomePage extends Component {
                             src={activityList[0].activityCoverUrl}
                             />
                     </View>
-                    <View className='discount-zone-box' style={{color: '#08bb11'}}>
+                    <View className='discount-zone-box' style={{color: '#08bb11'}} onClick={this.navAcitivityList.bind(this, 1)}>
                         <View className='title'>
                             {activityList[1].activityTitle}
                         </View>
@@ -107,7 +117,7 @@ class HomePage extends Component {
                             src={activityList[1].activityCoverUrl}
                             />
                     </View>
-                    <View className='discount-zone-box'  style={{color: '#f1841e'}}>
+                    <View className='discount-zone-box'  style={{color: '#f1841e'}} onClick={this.navAcitivityList.bind(this, 2)}>
                         <View className='title'>
                             {activityList[2].activityTitle}
                         </View>
@@ -117,6 +127,7 @@ class HomePage extends Component {
                         />
                     </View>
                 </View>
+
                 <View className='recommand-goods'>
                     <View className='title'>
                         <View
