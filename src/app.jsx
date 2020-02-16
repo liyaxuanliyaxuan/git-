@@ -18,7 +18,7 @@ const store = configStore()
 
 class App extends Component {
   global = {
-    url: 'http://192.168.0.104:7001'
+    url: 'http://192.168.0.108:7001'
   }
   config = {
     

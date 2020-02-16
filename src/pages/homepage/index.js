@@ -10,45 +10,65 @@ class HomePage extends Component {
         super(props);
         this.state = {
            hotTabIndex: 0,
-           hotNewGoodsList: [
-            {
-                goodsName: '养殖场农养殖场农家鸡蛋养殖场农家鸡蛋家鸡蛋养殖场农家鸡蛋养殖场农家鸡蛋养殖场农家鸡蛋养殖场农家鸡蛋',
-                img: "https://ss0.bdstatic.com/70cFuHSh_Q1YnxGkpoWK1HF6hhy/it/u=3784095618,1760969354&fm=26&gp=0.jpg",
-                goodsPrice: '24.4'
-            },
-            {
-                goodsName: '养殖场农家鸡蛋',
-                img: "https://ss0.bdstatic.com/70cFuHSh_Q1YnxGkpoWK1HF6hhy/it/u=3784095618,1760969354&fm=26&gp=0.jpg",
-                goodsPrice: '24.4'
-            },
-            {
-                goodsName: '养殖场农家鸡蛋',
-                img: "https://ss0.bdstatic.com/70cFuHSh_Q1YnxGkpoWK1HF6hhy/it/u=3784095618,1760969354&fm=26&gp=0.jpg",
-                goodsPrice: '24.4'
-            },
-            {
-                goodsName: '养殖场农家鸡蛋',
-                img: "https://ss0.bdstatic.com/70cFuHSh_Q1YnxGkpoWK1HF6hhy/it/u=3784095618,1760969354&fm=26&gp=0.jpg",
-                goodsPrice: '24.4'
-            },
-            {
-                goodsName: '养殖场农家鸡蛋',
-                img: "https://ss0.bdstatic.com/70cFuHSh_Q1YnxGkpoWK1HF6hhy/it/u=3784095618,1760969354&fm=26&gp=0.jpg",
-                goodsPrice: '24.4'
-            }
-        ]
+           hotNewGoodsList: [],
+           activityList: []
         }
     }
 
+    componentDidMount() {
+        const url = Taro.getApp().global.url;
+        // 拉取 活动栏目
+        Taro.request({
+            url: url + '/activityList',
+            header: {
+                'content-type': 'application/json'
+            },
+            success: (res) => {
+                console.log(res)
+                this.setState({
+                    activityList: res.data.data.activityList
+                })
+            }
+        })
+
+
+
+        //拉取 热门推荐
+        Taro.request({
+            url: url + '/ranklist?rankType=0',
+            header: {
+                'content-type': 'application/json'
+            },
+            success: (res) => {
+                this.setState({
+                    hotNewGoodsList: res.data.data.rankList
+                })
+            }
+        })
+    }
+
     changeHotTab = (index) => {
-        console.log(index)
+        const url = Taro.getApp().global.url;
+        Taro.request({
+            url: url + '/ranklist?rankType=' + index,
+            header: {
+                'content-type': 'application/json'
+            },
+            success: (res) => {
+                this.setState({
+                    hotNewGoodsList: res.data.data.rankList
+                })
+            }
+        })
         this.setState({
             hotTabIndex: index
         })
     }
 
+    
+
     render() {
-        const { hotNewGoodsList } = this.state;
+        const { activityList, hotNewGoodsList } = this.state;
         return (
             <View className='homepage'>
                 <View className='search-zone'>
@@ -60,26 +80,37 @@ class HomePage extends Component {
                 <View className='top-back'></View>
                 <Banner />
                 <View className='discount-zone'>
-                    <View className='discount-zone-box'>
+                    <View className='discount-zone-box box-main'>
                         <View className='title'>
-                            1元抢购
+                            <View className='main'>
+                                {activityList[0].activityTitle}
+                            </View>
+                            <View className='vice'>
+                                {activityList[0].activitySubTitle}
+                            </View>
                         </View>
-                        <Image className='img' src="https://ss1.bdstatic.com/70cFuXSh_Q1YnxGkpoWK1HF6hhy/it/u=2725077377,3709409194&fm=26&gp=0.jpg" />
-                        <View className='price'>￥18.8</View>
+                        <Image
+                            className='img'
+                            src={activityList[0].activityCoverUrl}
+                            />
                     </View>
-                    <View className='discount-zone-box border'>
+                    <View className='discount-zone-box' style={{color: '#08bb11'}}>
                         <View className='title'>
-                            1元抢购
+                            {activityList[1].activityTitle}
                         </View>
-                        <Image className='img' src="https://ss1.bdstatic.com/70cFuXSh_Q1YnxGkpoWK1HF6hhy/it/u=2725077377,3709409194&fm=26&gp=0.jpg" />
-                        <View className='price'>￥18.8</View>
+                        <Image
+                            className='img'
+                            src={activityList[1].activityCoverUrl}
+                            />
                     </View>
-                    <View className='discount-zone-box'>
+                    <View className='discount-zone-box'  style={{color: '#f1841e'}}>
                         <View className='title'>
-                            1元抢购
+                            {activityList[2].activityTitle}
                         </View>
-                        <Image className='img' src="https://ss1.bdstatic.com/70cFuXSh_Q1YnxGkpoWK1HF6hhy/it/u=2725077377,3709409194&fm=26&gp=0.jpg" />
-                        <View className='price'>￥18.8</View>
+                        <Image
+                            className='img'
+                            src={activityList[2].activityCoverUrl}
+                        />
                     </View>
                 </View>
                 <View className='recommand-goods'>
@@ -99,12 +130,12 @@ class HomePage extends Component {
                             hotNewGoodsList.map((item, index) => {
                                 return (
                                     <View key={index} className={index % 2 ? 'item item-right' : 'item item-left'}>
-                                        <Image src={item.img} className='img' />
+                                        <Image src={item.goodsImg} className='img' />
                                         <View className='goods-name'>
                                             {item.goodsName}
                                         </View>
                                         <View className='goods-price'>
-                                            {item.goodsPrice}
+                                            ￥{item.goodsDiscountPrice}
                                         </View>
                                     </View>
                                 )
