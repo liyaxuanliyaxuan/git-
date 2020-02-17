@@ -1,13 +1,12 @@
 import Taro, { Component } from '@tarojs/taro';
 import { View } from '@tarojs/components';
 import { connect } from '@tarojs/redux';
-import { AtTabs, AtTabsPane,AtButton  } from 'taro-ui';
+import { AtTabs, AtTabsPane, AtButton, AtToast } from 'taro-ui';
 
 import GoodItem from '../components/goodItem/index';
 
 import './index.less';
 
-const url = Taro.getApp().global.url;
 
 class Classification extends Component {
     constructor(props) {
@@ -51,105 +50,54 @@ class Classification extends Component {
             }]
       }
     }
-    
-    componentDidMount () {
-      this.getGoodsTab();
+    handleClick(value) {
+        this.setState({
+            currentIndex: value,
+        })
     }
-    // 拉取tab
-    getGoodsTab = () => {
-      Taro.request({
-        url: url + '/goodsclass',
-        header: {
-            'content-type': 'application/json'
-        },
-        success: (res) => {
-          // 转化结果为 对应taro ui 格式
-          let tabList = [];
-          for(let item of res.data.data.goodsClass) {
-            tabList.push({'title': item['class'], 'classId': item['classId']})
-          }
-          this.setState({
-            tabList
-          })
-          
-          this.getGoodsList(tabList[0].classId);
-        }
-      })
-    }
-    getGoodsList = (goodsType) => {
-      Taro.request({
-        url: url + '/goodslist',
-        method: 'post',
-        data: {
-          'class': goodsType
-        },
-        header: {
-            'content-type': 'application/json'
-        },
-        success: (res) => {
-          this.setState({
-            goodsList: res.data.data.goodsList
-          })
-        }
-      })
-      
-    }
-
-    handleClick (value) {
-      const goodsClass = this.state.tabList[value].classId;
-      this.getGoodsList(goodsClass);
+    popToast() {
       this.setState({
-          currentIndex: value
+        ifShow: true
       })
-  }
-
+    }
     render() {
-        const { tabList, currentIndex, goodsList } = this.state;
+        const { tabList, currentIndex, goodsList, ifShow } = this.state;
         return (
+          <View>
+               <AtToast isOpened={ifShow} text='已经在购物车等你啦~' duration={1000}></AtToast>
             <AtTabs
-              current={currentIndex}
-              scroll
-              height='100vh'
-              tabDirection='vertical'
-              tabList={tabList}
-              onClick={this.handleClick.bind(this)}>
+            current={currentIndex}
+            scroll
+            height='100vh'
+            tabDirection='vertical'
+            tabList={tabList}
+            onClick={this.handleClick.bind(this)}>
               <AtTabsPane tabDirection='vertical' current={currentIndex} index={0}>
                 {
                   goodsList.map((item, indexGoods) => {
                     return(
-                      <GoodItem goodInfo={item} key={indexGoods} />
+                      <GoodItem goodInfo={item} key={indexGoods} ifShow={ifShow} popToast={this.popToast.bind(this)}/>
                     )
                   })
                 }
               </AtTabsPane>
               <AtTabsPane tabDirection='vertical' current={currentIndex} index={1}>
-                {
-                    goodsList.map((item, indexGoods) => {
-                      return(
-                        <GoodItem goodInfo={item} key={indexGoods} />
-                      )
-                    })
-                }
+                <View style='font-size:18px;text-align:center;height:200px;'>标签页二的内容</View>
               </AtTabsPane>
               <AtTabsPane tabDirection='vertical' current={currentIndex} index={2}>
-                {
-                    goodsList.map((item, indexGoods) => {
-                      return(
-                        <GoodItem goodInfo={item} key={indexGoods} />
-                      )
-                    })
-                }
+                <View style='font-size:18px;text-align:center;height:200px;'>标签页三的内容</View>
               </AtTabsPane>
               <AtTabsPane tabDirection='vertical' current={currentIndex} index={3}>
-                {
-                    goodsList.map((item, indexGoods) => {
-                      return(
-                        <GoodItem goodInfo={item} key={indexGoods} />
-                      )
-                    })
-                }
+                <View style='font-size:18px;text-align:center;height:200px;'>标签页四的内容</View>
+              </AtTabsPane>
+              <AtTabsPane tabDirection='vertical' current={currentIndex} index={4}>
+                <View style='font-size:18px;text-align:center;height:200px;'>标签页五的内容</View>
+              </AtTabsPane>
+              <AtTabsPane tabDirection='vertical' current={currentIndex} index={5}>
+                <View style='font-size:18px;text-align:center;height:200px;'>标签页六的内容</View>
               </AtTabsPane>
           </AtTabs>
+          </View>
         )
     }
 }

@@ -1,0 +1,55 @@
+.good-shop-item {
+  height: 200rpx;
+  background-color: #fff;
+  margin-top: 25rpx;
+  padding: 25rpx;
+  width: 650rpx;
+  border-radius: 35rpx;
+  display: flex;
+  align-items: center;
+}
+.good-shop-item .not-choose {
+  width: 30rpx;
+  height: 30rpx;
+  border-radius: 50%;
+  border: 1px solid #666;
+}
+.good-shop-item .is-choose {
+  width: 30rpx;
+  height: 30rpx;
+  border-radius: 50%;
+  border: 1px solid #a6e3e9;
+  background: #a6e3e9;
+}
+.good-shop-item .good-img {
+  width: 160rpx;
+  height: 160rpx;
+  border-radius: 10rpx;
+  margin-left: 30rpx;
+}
+.good-shop-item .good-info {
+  flex: 1;
+  height: 140rpx;
+  display: flex;
+  flex-direction: column;
+  font-size: 32px;
+  font-weight: 500;
+  justify-content: space-between;
+  padding: 0 25rpx;
+}
+.good-shop-item .good-info .good-buy {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.good-shop-item .good-info .good-buy .good-price {
+  color: #71C9CE;
+}
+.good-shop-item .good-info .good-buy .good-add {
+  display: flex;
+  align-items: center;
+}
+.good-shop-item .good-info .good-buy .good-add .good-num {
+  color: #333;
+  padding: 0 10rpx;
+}

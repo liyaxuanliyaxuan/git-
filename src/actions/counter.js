@@ -3,16 +3,23 @@ import {
   MINUS
 } from '../constants/counter'
 
-export const add = () => {
+export const add = (num) => {
   return {
-    type: ADD
+    type: ADD,
+    value: num
   }
 }
-export const minus = () => {
+export const minus = (num) => {
   return {
-    type: MINUS
+    type: MINUS,
+    value: num
   }
 }
+  
+
+
+
+
 
 // 异步的action
 export function asyncAdd () {

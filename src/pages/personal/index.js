@@ -15,15 +15,6 @@ class Personal extends Component {
         enablePullDownRefresh:false
     }
 
-    naviGate = (index) => {
-        switch(index) {
-            case 0: Taro.navigateTo({ url: '/pages/addressList/index' });
-            case 1: Taro.navigateTo({ url: '/pages/addressDetail/index' });
-            case 2: Taro.navigateTo({ url: '/pages/addressDetail/index' });
-            case 3: Taro.navigateTo({ url: '/pages/addressDetail/index' });
-        }
-    }
-
     render() {
         return (
             <View className='personal'>
@@ -37,16 +28,16 @@ class Personal extends Component {
 
                     <Order />
 
-                    <View className='one-item margin-top-20' onClick={this.naviGate.bind(this, 0)}>
+                    <View className='one-item margin-top-20'>
                         <View>地址管理</View><View>></View>
                     </View>
-                    <View className='one-item margin-top-10' onClick={this.naviGate.bind(this, 0)}>
+                    <View className='one-item margin-top-10'>
                         <View>推荐有奖</View><View>></View>
                     </View>
-                    <View className='one-item margin-top-10' onClick={this.naviGate.bind(this, 0)}>
+                    <View className='one-item margin-top-10'>
                         <View>联系客服</View><View>></View>
                     </View>
-                    <View className='one-item margin-top-10' onClick={this.naviGate.bind(this, 0)}>
+                    <View className='one-item margin-top-10'>
                         <View>版本管理</View><View>></View>
                     </View>
                     

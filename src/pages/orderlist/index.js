@@ -12,7 +12,7 @@ class OrderList extends Component {
         super(props);
         this.state = {
             current: Number(this.$router.params.orderListStatus), 
-            tabList: [{title: '全部'}, {title: '待付款'}, {title: '配送中'}, {title: '已完成'}, {title:'已失效'}]
+            tabList: [{title: '全部订单'}, {title: '待付款'}, {title: '配送中'}, {title: '已完成'}, {title:'已失效'}]
         }
     }
 

@@ -37,9 +37,13 @@ class AddressDetail extends Component {
         // 在小程序中，如果想改变 value 的值，需要 `return value` 从而改变输入框的当前值
         return userAddress
     }
-
+    handleChangeSave () {
+    Taro.navigateTo({
+        url:'/pages/orderlist/index'
+    })
+    }
     render() {
-        const { userName, userTel, userAddress } = this.state;
+        const { userName, userTel, userAddress} = this.state;
         return (
             <View className='address-detail'>
                 <AtInput
@@ -65,7 +69,8 @@ class AddressDetail extends Component {
                     value={userAddress}
                     onChange={this.handleChangeUserAddress.bind(this)}
                 />
-                <View className='save-btn'>保存</View>
+                <View className='save-btn'
+                onClick={this.handleChangeSave.bind(this)}>保存</View>
             </View>
         )
     }

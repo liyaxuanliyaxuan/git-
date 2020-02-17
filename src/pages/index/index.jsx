@@ -20,7 +20,7 @@ import './index.less'
     dispatch(asyncAdd())
   }
 }))
-class Index extends Component {
+class Index extends Component { 
 
     config = {
     navigationBarTitleText: '首页'

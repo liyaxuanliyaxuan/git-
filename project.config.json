@@ -2,21 +2,13 @@
 	"miniprogramRoot": "dist/",
 	"projectname": "bianligo",
 	"description": "便利go",
-	"appid": "wxd820c448d078c899",
+	"appid": "wx12eeec3469b04fb3",
 	"setting": {
-		"urlCheck": false,
+		"urlCheck": true,
 		"es6": false,
 		"postcss": false,
 		"minified": false,
-		"newFeature": true,
-		"checkInvalidKey": true,
-		"checkSiteMap": true,
-		"uploadWithSourceMap": true,
-		"babelSetting": {
-			"ignore": [],
-			"disablePlugins": [],
-			"outputPath": ""
-		}
+		"newFeature": true
 	},
 	"compileType": "miniprogram",
 	"simulatorType": "wechat",

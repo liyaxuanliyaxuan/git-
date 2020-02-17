@@ -1,0 +1,107 @@
+.shop-car {
+  background-color: #f4f4f4;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.shop-car .person-address {
+  width: 680rpx;
+  height: 100rpx;
+  padding: 10rpx 35rpx;
+  display: flex;
+  align-items: center;
+  background-color: #fff;
+}
+.shop-car .person-address Image {
+  width: 50rpx;
+  height: 50rpx;
+}
+.shop-car .person-address .address-all {
+  flex: 1;
+  display: flex;
+  justify-content: space-between;
+  padding: 30rpx;
+  align-items: center;
+}
+.shop-car .person-address .address-all .person-info {
+  display: flex;
+  flex-direction: column;
+  font-size: 26px;
+}
+.shop-car .person-address .address-all .address-manage {
+  font-size: 26px;
+  color: #666;
+}
+.shop-car .shop-list {
+  margin-bottom: 110rpx;
+}
+.shop-car .buy {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 90rpx;
+  padding: 0 25rpx;
+  width: 700rpx;
+  position: fixed;
+  bottom: 0;
+  background-color: #fff;
+  border-top: 1px solid siver;
+  font-size: 28px;
+  color: 333;
+  font-family: 'SimHei';
+}
+.shop-car .buy .choose-all {
+  display: flex;
+  align-items: center;
+}
+.shop-car .buy .choose-all .not-choose {
+  width: 25rpx;
+  height: 25rpx;
+  border-radius: 50%;
+  border: 1px solid #333;
+  margin-right: 15rpx;
+}
+.shop-car .buy .choose-all .is-choose {
+  width: 25rpx;
+  height: 25rpx;
+  border-radius: 50%;
+  border: 1px solid #a6e3e9;
+  margin-right: 15rpx;
+  background: #a6e3e9;
+}
+.shop-car .buy .choose-all .choose {
+  height: 25rpx;
+  line-height: 25rpx;
+}
+.shop-car .buy .pay-all {
+  display: flex;
+  align-items: center;
+}
+.shop-car .buy .pay-all .price-all {
+  display: flex;
+  align-items: center;
+}
+.shop-car .buy .pay-all .price-all .price-detail {
+  color: #71C9CE;
+  font-weight: bold;
+}
+.shop-car .buy .pay-all .pay-btn {
+  margin-left: 15rpx;
+  width: 140rpx;
+  text-align: center;
+  line-height: 70rpx;
+  height: 70rpx;
+  border-radius: 15rpx;
+  color: #fff;
+  background-image: linear-gradient(#cbf1f5, #A6E3E9);
+}
+.shop-car .buy .pay-all .pay-btn--active {
+  margin-left: 15rpx;
+  width: 140rpx;
+  text-align: center;
+  line-height: 70rpx;
+  height: 70rpx;
+  border-radius: 15rpx;
+  color: #fff;
+  background: #A6E3E9;
+}

@@ -1,51 +1,57 @@
 import Taro, { Component } from '@tarojs/taro';
 import { View, Image } from '@tarojs/components';
 import { connect } from '@tarojs/redux';
-import { AtIcon, AtCheckbox } from 'taro-ui';
+import { AtIcon } from 'taro-ui'
+
+import { set, addOne, decOne, joinItem, removeItem} from '../../../actions/shopper'
+
 import './index.less';
 
+
+
+@connect(({shopper}) => {
+    return{
+        chooseAll: shopper.chooseAll,
+        ifChoose: shopper.ifChoose     
+    }
+  }, (dispatch) => ({
+    select (info) {
+        dispatch(set(info))
+    },
+    add (index) {
+        dispatch(addOne(index)) 
+    },
+    dec (index) {
+        dispatch(decOne(index))
+    },
+    joinItem (info, index){
+        dispatch(joinItem(info, index))
+    },
+    removeItem (index){
+        dispatch(removeItem(index))
+    }
+  }))
+
+
 class GoodShopItem extends Component {
-    constructor(props) {
-        super(props);
-        this.state = {
-            goodNum: this.props.goodInfo ? this.props.goodInfo.goodNum : 0
-        }
-    }
-    addGoodNum = () => {
-        console.log('++',this.state.goodNum)
-        this.setState({
-            goodNum: this.state.goodNum + 1
-        })
-    }
-    
-    subtractGoodNum = () => {
-        this.setState({
-            goodNum: this.state.goodNum - 1
-        })
-    }
-
-    
-
     render() {
-        const { goodInfo } = this.props;
+        const { goodInfo, chooseAll, ifChoose, select , add, dec, index, joinItem, removeItem } = this.props; 
         return(
-            goodInfo && this.state.goodNum ?
-            <View className='good-shop-item'>
-                <View className='ifchoose'>
-                </View>
+            goodInfo ?
+            <View className='good-shop-item' onClick={select.bind(this,goodInfo)}>
+                <View  className={(ifChoose[index])?'is-choose':'not-choose'} 
+                  onClick={()=>{
+                      if(ifChoose[index]){ removeItem(index) }
+                      else{ joinItem(goodInfo, index)}}}></View>
                 <Image className='good-img' src={goodInfo.goodImg} />
                 <View className='good-info'>
                     <View className='good-title'>{goodInfo.goodTitle}</View>
                     <View className='good-buy'>
                         <View className='good-price'>￥{goodInfo.goodPrice * goodInfo.goodNum}</View>
                         <View className='good-add'>
-                            <AtIcon value='add-circle' size='20' color='rgb(190, 190, 190)'
-                                onClick={this.addGoodNum.bind(this)}
-                                ></AtIcon>
-                            <View className='good-num'>{ this.state.goodNum }</View>
-                            <AtIcon value='subtract-circle' size='20' color='rgb(190, 190, 190)'
-                                onClick={this.subtractGoodNum.bind(this)}
-                                ></AtIcon>
+                            <AtIcon onClick={add.bind(this,index)}  value='add-circle' size='20' color='rgb(190, 190, 190)'></AtIcon>
+                            <View className='good-num'>{ goodInfo.goodNum }</View>
+                            <AtIcon onClick={dec.bind(this,index)} value='subtract-circle' size='20' color='rgb(190, 190, 190)'></AtIcon>
                         </View>
                     </View>
                 </View>

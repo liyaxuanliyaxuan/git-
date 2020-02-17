@@ -1,0 +1,8 @@
+export const SET = 'SET'
+export const ADD_ONE = 'addone'
+export const DEC_ONE = 'decone'
+export const JOIN_ITEM = 'joinItem'
+export const REMOVE_ITEM = 'removeItem'
+export const SELECT_ALL = 'selectAll'
+export const RESET_ALL = 'resetAll'
+export const ADD_TO_CAR = 'addToCar'

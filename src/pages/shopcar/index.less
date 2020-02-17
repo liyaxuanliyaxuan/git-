@@ -51,12 +51,21 @@
         .choose-all{
             display: flex;
             align-items: center;
-            .circle{
+            .not-choose{
                 width: 25rpx;
                 height: 25rpx;
                 border-radius: 50%;
                 border: 1px solid #333;
                 margin-right: 15rpx;
+            }
+            .is-choose{
+                width: 25rpx;
+                height: 25rpx;
+                border-radius: 50%;
+                border: 1px solid #a6e3e9;
+                margin-right: 15rpx;
+                background: #a6e3e9;
+
             }
             .choose{
                 height: 25rpx;
@@ -83,6 +92,16 @@
                 border-radius: 15rpx;
                 color: #fff;
                 background-image: linear-gradient(#cbf1f5,#A6E3E9);
+            }
+            .pay-btn--active{
+                margin-left: 15rpx;
+                width: 140rpx;
+                text-align: center;
+                line-height: 70rpx;
+                height: 70rpx;
+                border-radius: 15rpx;
+                color: #fff;
+                background: #A6E3E9;
             }
         }
     }

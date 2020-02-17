@@ -6,9 +6,7 @@ import './index.less';
 
 
 class OrderItem extends Component {
-    orderDetail = () => {
-        Taro.navigateTo({ url: '/pages/orderdetail/index' });
-    }
+
     render() {
         return (
             <View className='order-item'>
@@ -18,7 +16,7 @@ class OrderItem extends Component {
                     共计1件商品，应付<View className='price'>￥13.9</View>
                 </View>
                 <View className='order-item-bottom'>
-                    <View className='btn' onClick={this.orderDetail.bind(this)}>查看订单</View>
+                    <View className='btn'>查看订单</View>
                 </View>
             </View>
         )
