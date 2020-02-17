@@ -7,8 +7,7 @@ import './index.less';
 class OrderDetail extends Component {
     constructor(props){
         super(props);
-        this.state = {
-           
+        this.state = {       
         }
     }
 
@@ -17,7 +16,8 @@ class OrderDetail extends Component {
             <View className='order-detail'>
 
                 <View className='goods-info'>
-                    <Image className='goods-img' src='http://yunimg.bbcmart.com/upload/image/2018/08/15/38930_14294111.jpg' />
+                    <Image className='goods-img' 
+                    src='http://yunimg.bbcmart.com/upload/image/2018/08/15/38930_14294111.jpg' />
                     <View className='goods-text'>
                         <View>千层面</View>
                         <View style='color: #A6E3E9; font-weight: bold;'>￥12.9</View>
